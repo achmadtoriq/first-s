@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="container mx-auto flex justify-center items-center py-10">
+          <Image
+            src={`/fm_logo.png`}
+            alt="fm_logo"
+            width={100}
+            height={100}
+            className="aspect-ratio"
+          />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
