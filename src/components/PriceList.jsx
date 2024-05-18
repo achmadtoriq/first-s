@@ -9,7 +9,7 @@ const Price = [
   {
     id: 1,
     name: "Happy pro",
-    price: ['239,760', ''],
+    price: ["239,760"],
     speed: "30 Mbps",
     istvkabel: false,
     cntchannel: "-",
@@ -24,7 +24,7 @@ const Price = [
   {
     id: 2,
     name: "Stream Value",
-    price: ['239,760', '2.753,910'],
+    price: ["239,760", "2.753,910"],
     speed: "50 Mbps",
     istvkabel: false,
     cntchannel: "-",
@@ -34,12 +34,16 @@ const Price = [
       "Wifi Tanpa batas Kuota",
       "Harga Sudah ppn dan sewa alat",
     ],
-    class: ["border-yellow-700", "text-yellow-500", "data-[selected]:bg-yellow-500"],
+    class: [
+      "border-yellow-700",
+      "text-yellow-500",
+      "data-[selected]:bg-yellow-500",
+    ],
   },
   {
     id: 3,
     name: "Stream Pro",
-    price: ['239,760', '5.306,910'],
+    price: ["239,760", "5.306,910"],
     speed: "200 Mbps",
     istvkabel: false,
     cntchannel: "-",
@@ -54,7 +58,7 @@ const Price = [
   {
     id: 4,
     name: "Joy Value",
-    price: ['239,760', '3.419,910'],
+    price: ["239,760", "3.419,910"],
     speed: "100 Mbps",
     istvkabel: true,
     cntchannel: 119,
@@ -64,12 +68,16 @@ const Price = [
       "Wifi Tanpa batas Kuota",
       "Harga Sudah ppn dan sewa alat",
     ],
-    class: ["border-green-700", "text-green-500", "data-[selected]:bg-green-500"],
+    class: [
+      "border-green-700",
+      "text-green-500",
+      "data-[selected]:bg-green-500",
+    ],
   },
   {
     id: 5,
     name: "Joy Pro",
-    price: ['239,760', '4.196,910'],
+    price: ["239,760", "4.196,910"],
     speed: "150 Mbps",
     istvkabel: true,
     cntchannel: 119,
@@ -79,12 +87,16 @@ const Price = [
       "Wifi Tanpa batas Kuota",
       "Harga Sudah ppn dan sewa alat",
     ],
-    class: ["border-purple-700", "text-purple-500", "data-[selected]:bg-purple-500"],
+    class: [
+      "border-purple-700",
+      "text-purple-500",
+      "data-[selected]:bg-purple-500",
+    ],
   },
   {
     id: 6,
     name: "Star Value",
-    price: ['239,760', '9.746,910'],
+    price: ["239,760", "9.746,910"],
     speed: "300 Mbps",
     istvkabel: true,
     cntchannel: 198,
@@ -94,12 +106,16 @@ const Price = [
       "Wifi Tanpa batas Kuota",
       "Harga Sudah ppn dan sewa alat",
     ],
-    class: ["border-orange-700", "text-orange-500", "data-[selected]:bg-orange-500"],
+    class: [
+      "border-orange-700",
+      "text-orange-500",
+      "data-[selected]:bg-orange-500",
+    ],
   },
   {
     id: 7,
     name: "Star Pro",
-    price: ['239,760', '17.738,910'],
+    price: ["239,760", "17.738,910"],
     speed: "500 Mbps",
     istvkabel: true,
     cntchannel: 204,
@@ -118,9 +134,9 @@ const PriceList = () => {
   // const [color, setColor] = useState("blue-500");
 
   const handleTabClick = (id, index) => {
-    setSelectedIndex(prevState => ({
+    setSelectedIndex((prevState) => ({
       ...prevState,
-      [id]: index
+      [id]: index,
     }));
   };
 
@@ -157,7 +173,7 @@ const PriceList = () => {
               break;
           }
 
-          let gold_p = item.price[1].split(",");
+          let gold_p = item.price[1]?.split(",");
           let stand_p = item.price[0].split(",");
 
           return (
@@ -176,64 +192,103 @@ const PriceList = () => {
                 <h1 className={`text-xl ${item.class[1]} uppercase font-bold`}>
                   {item.name}
                 </h1>
-                <TabGroup
-                  className={`text-sm p-3`}
-                  selectedIndex={selectedIndex[item.id] || 0}
-                  onChange={(index) => handleTabClick(item.id, index)}
-                >
-                  <TabList className={`flex justify-center items-center`}>
-                    <Tab
-                      className={`${item.class[2]} data-[selected]:text-white data-[selected]:border-none bg-white border border-gray-300  py-1 px-4 rounded-l-lg ${item.class[1]}`}
+                {item.price.length > 1 ? (
+                  <>
+                    <TabGroup
+                      className={`text-sm p-3`}
+                      selectedIndex={selectedIndex[item.id] || 0}
+                      onChange={(index) => handleTabClick(item.id, index)}
                     >
-                      <p className="font-bold">STANDAR</p>
-                      {/* <p>Per Bulan</p> */}
-                    </Tab>
-                    <Tab
-                      className={`${item.class[2]} data-[selected]:text-white data-[selected]:border-none bg-white border border-gray-300  py-1 px-4 rounded-r-lg ${item.class[1]}`}
-                    >
-                      <p className="font-bold">GOLD</p>
-                      {/* <p>12 Bulan</p> */}
-                    </Tab>
-                  </TabList>
-                  <TabPanels>
-                    <TabPanel
-                      className={`grid grid-cols-1 font-extrabold  gap-1 py-6`}
-                    >
-                      <div className="flex justify-center items-end">
-                        <div className=" flex text-4xl items-start gap-1">
-                          <p className={`${item.class[1]} text-lg`}>Rp</p>
-                          <h1 className={`${item.class[1]} text-5xl`}>
-                            {stand_p[0]}
-                          </h1>
-                        </div>
-                        <div>
-                          <p className={`${item.class[1]} mb-1`}>{stand_p[1]}</p>
-                        </div>
+                      <TabList className={`flex justify-center items-center`}>
+                        <Tab
+                          className={`${item.class[2]} data-[selected]:text-white data-[selected]:border-none bg-white border border-gray-300  py-1 px-4 rounded-l-lg ${item.class[1]}`}
+                        >
+                          <p className="font-bold">STANDAR</p>
+                          {/* <p>Per Bulan</p> */}
+                        </Tab>
+                        <Tab
+                          className={`${item.class[2]} data-[selected]:text-white data-[selected]:border-none bg-white border border-gray-300  py-1 px-4 rounded-r-lg ${item.class[1]}`}
+                        >
+                          <p className="font-bold">GOLD</p>
+                          {/* <p>12 Bulan</p> */}
+                        </Tab>
+                      </TabList>
+                      <TabPanels>
+                        <TabPanel
+                          className={`grid grid-cols-1 font-extrabold  gap-1 py-6`}
+                        >
+                          <div className="flex justify-center items-end">
+                            <div className=" flex text-4xl items-start gap-1">
+                              <p className={`${item.class[1]} text-lg`}>Rp</p>
+                              <h1 className={`${item.class[1]} text-5xl`}>
+                                {stand_p[0]}
+                              </h1>
+                            </div>
+                            <div>
+                              <p className={`${item.class[1]} mb-1`}>
+                                {stand_p[1]}
+                              </p>
+                            </div>
+                          </div>
+                          <p className={`text-black text-md font-medium`}>
+                            Per Bulan
+                          </p>
+                        </TabPanel>
+                        <TabPanel
+                          className={`grid grid-cols-1 font-extrabold  gap-1 py-6`}
+                        >
+                          <div className="flex justify-center items-end">
+                            <div className=" flex text-4xl items-start gap-1">
+                              <p className={`${item.class[1]} text-lg`}>Rp</p>
+                              <h1 className={`${item.class[1]} text-5xl`}>
+                                {gold_p[0]}
+                              </h1>
+                            </div>
+                            <div>
+                              <p className={`${item.class[1]} mb-1`}>
+                                {gold_p[1]}
+                              </p>
+                            </div>
+                          </div>
+                          <p className={`text-black text-md font-medium`}>
+                            Per Tahun
+                          </p>
+                        </TabPanel>
+                      </TabPanels>
+                    </TabGroup>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-sm p-3">
+                      <div
+                        className={`bg-blue-500 w-[50%] mx-auto text-center text-white border-none border border-gray-300 py-1 px-4 rounded-lg`}
+                      >
+                        <p className="font-bold">STANDAR</p>
+                        {/* <p>Per Bulan</p> */}
                       </div>
-                      <p className={`text-black text-md font-medium`}>
-                        Per Bulan
-                      </p>
-                    </TabPanel>
-                    <TabPanel
-                      className={`grid grid-cols-1 font-extrabold  gap-1 py-6`}
-                    >
-                      <div className="flex justify-center items-end">
-                        <div className=" flex text-4xl items-start gap-1">
-                          <p className={`${item.class[1]} text-lg`}>Rp</p>
-                          <h1 className={`${item.class[1]} text-5xl`}>
-                            {gold_p[0]}
-                          </h1>
+                      <div
+                        className={`grid grid-cols-1 font-extrabold  gap-1 py-6`}
+                      >
+                        <div className="flex justify-center items-end">
+                          <div className=" flex text-4xl items-start gap-1">
+                            <p className={`${item.class[1]} text-lg`}>Rp</p>
+                            <h1 className={`${item.class[1]} text-5xl`}>
+                              {stand_p[0]}
+                            </h1>
+                          </div>
+                          <div>
+                            <p className={`${item.class[1]} mb-1`}>
+                              {stand_p[1]}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className={`${item.class[1]} mb-1`}>{gold_p[1]}</p>
-                        </div>
+                        <p className={`text-black text-md font-medium`}>
+                          Per Bulan
+                        </p>
                       </div>
-                      <p className={`text-black text-md font-medium`}>
-                        Per Tahun
-                      </p>
-                    </TabPanel>
-                  </TabPanels>
-                </TabGroup>
+                    </div>
+                  </>
+                )}
                 <div className="relative mx-auto -top-5">
                   <RadialBar
                     speed={[item.speed.replace(" Mbps", ""), prosen]}
