@@ -297,7 +297,7 @@ const PriceList = () => {
                 <div className="relative -top-5 grid grid-cols-1 text-left">
                   {item.spec.map((itemdet, idx) => {
                     return (
-                      <div key={idx} className="py-1 flex items-center text-sm">
+                      <div key={idx} className="py-1 flex items-center text-sm text-black">
                         <FaCheckCircle className="mr-2 text-green-900" />
                         <p>{itemdet.replace("[SPEED]", item.speed)}</p>
                       </div>
