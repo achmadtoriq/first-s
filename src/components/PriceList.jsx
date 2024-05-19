@@ -306,7 +306,7 @@ const PriceList = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button className="bg-green-900 text-white px-4 py-2 rounded-lg font-bold">
+                <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-bold">
                   Daftar Sekarang
                 </button>
               </div>
