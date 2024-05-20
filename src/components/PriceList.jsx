@@ -348,8 +348,8 @@ const PriceList = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="max-w-lg space-y-4 bg-white p-12"
               >
-                <DialogTitle className="text-lg font-bold">Deactivate account</DialogTitle>
-                <Description>This will permanently deactivate your account</Description>
+                <DialogTitle className="text-lg font-bold">Lengkapi Data</DialogTitle>
+                <Description>Kami akan segera menghubungi anda sesuai data yang di inputkan</Description>
                 <p>{choice} Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
                 <div className="flex gap-4">
                   <button onClick={() => setIsOpen(false)}>Cancel</button>
