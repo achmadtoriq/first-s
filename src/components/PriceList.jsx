@@ -333,7 +333,7 @@ const PriceList = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <Dialog static open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+          <Dialog static open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50 text-black">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
