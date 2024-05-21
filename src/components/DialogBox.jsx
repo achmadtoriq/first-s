@@ -38,7 +38,7 @@ const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nama, email, subject, message }),
+      body: JSON.stringify({ nama, email, nohp, alamat }),
     });
 
     const data = await res.json();

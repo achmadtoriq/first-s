@@ -16,6 +16,7 @@ const BoxPaket = ({
   return (
     <>
       {dataPrice?.map((item, idx) => {
+        console.log(item);
         let speeds = parseInt(item.speed.replace(" Mbps", ""));
         let prosen = 0;
         switch (speeds) {
