@@ -4,7 +4,25 @@ import React, { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import RadialBar from "./RadialBar";
-import { Description, Dialog, DialogPanel, DialogTitle, Tab, TabGroup, TabList, TabPanel, TabPanels, Transition } from "@headlessui/react";
+import {
+  Description,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Field,
+  Fieldset,
+  Input,
+  Label,
+  Legend,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Textarea,
+  Transition,
+} from "@headlessui/react";
+import clsx from "clsx";
 
 const Price = [
   {
@@ -132,9 +150,8 @@ const Price = [
 
 const PriceList = () => {
   const [selectedIndex, setSelectedIndex] = useState({});
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true);
   const [choice, setchoice] = useState(0);
-
 
   const handleTabClick = (id, index) => {
     setSelectedIndex((prevState) => ({
@@ -317,12 +334,15 @@ const PriceList = () => {
                 <div className="text-center">
                   {/* <Link href={`https://wa.me/6287897042408`} target="blank">
                     {" "} */}
-                    <button onClick={() => {
-                      setIsOpen(true)
-                      setchoice(idx)
-                      }} className="bg-green-500 text-white px-4 py-2 rounded-lg font-bold">
-                      Daftar Sekarang
-                    </button>
+                  <button
+                    onClick={() => {
+                      setIsOpen(true);
+                      setchoice(idx);
+                    }}
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg font-bold"
+                  >
+                    Daftar Sekarang
+                  </button>
                   {/* </Link> */}
                 </div>
               </motion.div>
@@ -333,27 +353,106 @@ const PriceList = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <Dialog static open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50 text-black">
+          <Dialog
+            static
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
+            className="relative z-50 text-black"
+          >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30"
+              className="fixed inset-0 overflow-y-auto bg-black/30 p-10"
             />
-            <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+            <div className="fixed min-h-full inset-0 flex w-screen items-center justify-center p-4">
               <DialogPanel
                 as={motion.div}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="max-w-lg space-y-4 bg-white p-12"
+                className="max-w-lg space-y-4 bg-white p-6"
               >
-                <DialogTitle className="text-lg font-bold">Lengkapi Data</DialogTitle>
-                <Description>Kami akan segera menghubungi anda sesuai data yang di inputkan</Description>
-                <p>{choice} Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
-                <div className="flex gap-4">
-                  <button onClick={() => setIsOpen(false)}>Cancel</button>
-                  <button onClick={() => setIsOpen(false)}>Deactivate</button>
+                <DialogTitle className="text-lg font-bold">
+                  Lengkapi Data
+                </DialogTitle>
+                <Description className={`text-sm/6 font-medium text-red-500`}>
+                  Kami akan segera menghubungi anda sesuai data yang di inputkan
+                </Description>
+                <div className="grid grid-cols-1">
+                  <Fieldset className="rounded-xl bg-white/5">
+                    <p className="text-sm font-bold">Paket</p>
+                    <Legend
+                      className={`text-xl font-bold ${Price[choice].class[1]}`}
+                    >
+                      {Price[choice].name}
+                    </Legend>
+                    <Legend
+                      className={`text-xl font-bold ${Price[choice].class[1]}`}
+                    >
+                      Rp. {Price[choice].price[0]}
+                    </Legend>
+
+                    <div className="rounded-xl border-black/10 border-2 px-3 my-3">
+                      <Field className={`pt-3`}>
+                        <Label className="text-sm/6 font-medium text-black">
+                          Nama Lengkap
+                        </Label>
+                        <Input
+                          className={clsx(
+                            "mt-3 block w-full rounded-lg border-none bg-black/10 py-1.5 px-3 text-sm/6 text-black",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25"
+                          )}
+                        />
+                      </Field>
+                      <Field className={`pt-3`}>
+                        <Label className="text-sm/6 font-medium text-black">
+                          Email
+                        </Label>
+                        <Input
+                          className={clsx(
+                            "mt-3 block w-full rounded-lg border-none bg-black/10 py-1.5 px-3 text-sm/6 text-black",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25"
+                          )}
+                        />
+                      </Field>
+                      <Field className={`pt-3`}>
+                        <Label className="text-sm/6 font-medium text-black">
+                          No. Handphone (WA)
+                        </Label>
+                        <Input
+                          className={clsx(
+                            "mt-3 block w-full rounded-lg border-none bg-black/10 py-1.5 px-3 text-sm/6 text-black",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25"
+                          )}
+                        />
+                      </Field>
+                      <Field className={`pt-3`}>
+                        <Label className="text-sm/6 font-medium text-black">
+                          Alamat Lengkap
+                        </Label>
+                        <Description className="text-xs/6 text-black/50">
+                          Masukkan alamat lengkap anda untuk memastikan lokasi tercover provider kami 
+                        </Description>
+                        <Textarea
+                          className={clsx(
+                            "mt-3 block w-full resize-none rounded-lg border-none bg-black/10 py-1.5 px-3 text-sm/6 text-black",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25"
+                          )}
+                          rows={3}
+                        />
+                      </Field>
+
+                      <div className="flex gap-4 my-5">
+                        <button
+                          onClick={() => setIsOpen(false)}
+                          className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold"
+                        >
+                          Kirim
+                        </button>
+                      </div>
+                    </div>
+                  </Fieldset>
                 </div>
               </DialogPanel>
             </div>
