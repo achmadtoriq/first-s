@@ -57,17 +57,28 @@ const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
                   </Description>
                   <div className="grid grid-cols-1">
                     <Fieldset className="rounded-xl bg-white/5">
-                      {/* <p className="text-sm font-bold">Paket</p> */}
-                      <Legend
-                        className={`text-xl font-bold text-center ${Price[choice].class[1]}`}
-                      >
-                        {Price[choice].name}
-                      </Legend>
-                      <Legend
-                        className={`text-xl font-bold text-center ${Price[choice].class[1]}`}
-                      >
-                        Rp. {Price[choice].price[0]}
-                      </Legend>
+                      {Price.map((item, idx) => {
+                        return item.id == choice.split("-")[0] ? (
+                          <div key={idx}>
+                            <Legend
+                              className={`text-xl font-bold text-center ${item.class[1]}`}
+                            >
+                              {item.name}
+                            </Legend>
+                            <Legend
+                              className={`text-xl font-bold text-center ${item.class[1]}`}
+                            >
+                              Rp.{" "}
+                              {item.price[choice.split("-")[1]].replace(
+                                ",",
+                                "."
+                              )}
+                            </Legend>
+                          </div>
+                        ) : (
+                          ""
+                        );
+                      })}
 
                       <div className="rounded-xl border-black/10 border-2 px-3 my-3">
                         <Field className={`pt-3`}>
