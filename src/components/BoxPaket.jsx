@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import RadialBar from "./RadialBar";
@@ -13,9 +13,15 @@ const BoxPaket = ({
   setchoice,
 }) => {
   const [isGold, setIsGold] = useState(0);
+  const [dataPaket, setDataPaket] = useState([]);
+
+  useEffect(() => {
+    setDataPaket(dataPrice)
+  }, [dataPrice]);
+
   return (
     <>
-      {dataPrice?.map((item, idx) => {
+      {dataPaket?.map((item, idx) => {
         console.log(item);
         let speeds = parseInt(item.speed.replace(" Mbps", ""));
         let prosen = 0;
