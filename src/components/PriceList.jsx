@@ -1,13 +1,102 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DialogBox from "./DialogBox";
-import Price from "@/data/paket.json";
+// import Price from "@/data/paket.json";
 import dataColor from "@/data/classess.json";
 // import BoxPaket from "./BoxPaket";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import RadialBar from "./RadialBar";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+
+const Price = [
+  {
+    id: 1,
+    name: "Happy pro",
+    price: ["239,760"],
+    speed: "30 Mbps",
+    istvkabel: false,
+    cntchannel: "-",
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: ["border-blue-700", "text-blue-500", "data-[selected]:bg-blue-500"]
+  },
+  {
+    id: 2,
+    name: "Stream Value",
+    price: ["239,760", "2.753,910"],
+    speed: "50 Mbps",
+    istvkabel: false,
+    cntchannel: "-",
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: [
+      "border-yellow-700",
+      "text-yellow-500",
+      "data-[selected]:bg-yellow-500"
+    ]
+  },
+  {
+    id: 3,
+    name: "Stream Pro",
+    price: ["239,760", "5.306,910"],
+    speed: "200 Mbps",
+    istvkabel: false,
+    cntchannel: "-",
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: ["border-red-700", "text-red-500", "data-[selected]:bg-red-500"]
+  },
+  {
+    id: 4,
+    name: "Joy Value",
+    price: ["239,760", "3.419,910"],
+    speed: "100 Mbps",
+    istvkabel: true,
+    cntchannel: 119,
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: [
+      "border-green-700",
+      "text-green-500",
+      "data-[selected]:bg-green-500"
+    ]
+  },
+  {
+    id: 5,
+    name: "Joy Pro",
+    price: ["239,760", "4.196,910"],
+    speed: "150 Mbps",
+    istvkabel: true,
+    cntchannel: 119,
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: [
+      "border-purple-700",
+      "text-purple-500",
+      "data-[selected]:bg-purple-500"
+    ]
+  },
+  {
+    id: 6,
+    name: "Star Value",
+    price: ["239,760", "9.746,910"],
+    speed: "300 Mbps",
+    istvkabel: true,
+    cntchannel: 198,
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: [
+      "border-orange-700",
+      "text-orange-500",
+      "data-[selected]:bg-orange-500"
+    ]
+  },
+  {
+    id: 7,
+    name: "Star Pro",
+    price: ["239,760", "17.738,910"],
+    speed: "500 Mbps",
+    istvkabel: true,
+    cntchannel: 204,
+    spec: ["Wifi Tanpa batas Kuota", "Harga Sudah ppn dan sewa alat"],
+    class: ["border-rose-700", "text-rose-500", "data-[selected]:bg-rose-500"]
+  }
+]
 
 const PriceList = () => {
   const [selectedIndex, setSelectedIndex] = useState({});
