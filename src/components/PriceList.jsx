@@ -382,7 +382,7 @@ const PriceList = () => {
                           }}
                         >
                           <TabList
-                            className={`flex justify-center items-center`}
+                            className={`flex justify-center items-center focus:border-none`}
                           >
                             <Tab
                               className={`${item.class[2]} data-[selected]:text-white data-[selected]:border-none bg-white border border-gray-300  py-1 px-4 rounded-l-lg ${item.class[1]}`}
