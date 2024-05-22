@@ -19,11 +19,12 @@ import {
 } from "@headlessui/react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
-const redirect = (url) => {
-  window.open(url, '_blank');
-};
+// const redirect = (url) => {
+//   window.open(url, '_blank');
+// };
 
 const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
   const [email, setEmail] = useState("");
