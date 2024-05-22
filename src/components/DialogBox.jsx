@@ -63,7 +63,7 @@ const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
     setTimeout(() => {
       setStatus("")
       setIsOpen(false)
-      redirect(`https://wa.me/6287897042408?text=${encodedMessage}`)
+      redirect(`https://web.whatsapp.com/send/?phone=6287897042408&text=${encodedMessage}&type=phone_number&app_absent=0`)
     }, 5000);
   };
 
