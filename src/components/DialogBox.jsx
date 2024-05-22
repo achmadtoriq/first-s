@@ -20,7 +20,10 @@ import {
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-import { redirect } from 'next/navigation'
+
+const redirect = (url) => {
+  window.open(url, '_blank');
+};
 
 const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
   const [email, setEmail] = useState("");
@@ -32,6 +35,10 @@ const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setStatus("Sending...");
+
+
+    const content =`Nama: ${nama} \n No.Hp (WA) : ${nohp} \n Email from: ${email} \n Alamat: ${alamat}`
+    const encodedMessage = encodeURIComponent(content);
 
     const res = await fetch("/api/send-email", {
       method: "POST",
@@ -56,7 +63,7 @@ const DialogBox = ({ isOpen, choice, Price, setIsOpen }) => {
     setTimeout(() => {
       setStatus("")
       setIsOpen(false)
-      // redirect('')
+      redirect(`https://wa.me/6287897042408?text=${encodedMessage}`)
     }, 5000);
   };
 
