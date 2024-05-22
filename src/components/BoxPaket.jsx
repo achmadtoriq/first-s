@@ -13,7 +13,6 @@ const BoxPaket = ({
   setchoice,
 }) => {
   const [isGold, setIsGold] = useState(0);
-  const [dataPaket, setDataPaket] = useState([]);
 
 
   useEffect(() => {
