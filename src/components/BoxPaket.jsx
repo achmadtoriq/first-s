@@ -15,8 +15,6 @@ const BoxPaket = ({
   const [isGold, setIsGold] = useState(0);
   const [dataPaket, setDataPaket] = useState([]);
 
-  const [borderLine, setBorderLine] = useState('');
-
 
   useEffect(() => {
     setDataPaket(dataPrice)
@@ -26,7 +24,8 @@ const BoxPaket = ({
     <>
       {dataPaket?.map((item, idx) => {
         console.log(item);
-        setBorderLine(item.class[0])
+        const borderLine = item.class[0]
+        console.log(borderLine);
         let speeds = parseInt(item.speed.replace(" Mbps", ""));
         let prosen = 0;
         switch (speeds) {
