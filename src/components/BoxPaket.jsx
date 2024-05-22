@@ -15,6 +15,9 @@ const BoxPaket = ({
   const [isGold, setIsGold] = useState(0);
   const [dataPaket, setDataPaket] = useState([]);
 
+  const [borderLine, setBorderLine] = useState('');
+
+
   useEffect(() => {
     setDataPaket(dataPrice)
   }, [dataPrice]);
@@ -23,6 +26,7 @@ const BoxPaket = ({
     <>
       {dataPaket?.map((item, idx) => {
         console.log(item);
+        setBorderLine(item.class[0])
         let speeds = parseInt(item.speed.replace(" Mbps", ""));
         let prosen = 0;
         switch (speeds) {
@@ -65,7 +69,7 @@ const BoxPaket = ({
             animate="visible"
             transition={{ duration: 0.5, delay: 0.5 }}
             key={idx}
-            className={`p-6 rounded-lg shadow-lg border-t-4 ${item.class[0]} bg-gray-300/50`}
+            className={`p-6 rounded-lg shadow-lg border-t-4 ${borderLine} bg-gray-300/50`}
           >
             <div className="flex flex-col">
               <h1 className={`text-xl ${item.class[1]} uppercase font-bold`}>
