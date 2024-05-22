@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import DialogBox from "./DialogBox";
 import Price from "@/data/paket.json";
+import dataColor from "@/data/classess.json";
 // import BoxPaket from "./BoxPaket";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -46,7 +47,10 @@ const PriceList = () => {
           <h1 className="text-2xl font-bold">Paket Internet Only</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {inetOnly.map((item, idx) => {
-              const borderLine = item.class[0];
+              const borderLine = dataColor[item.id - 1].border_color
+              const textColor = dataColor[item.id - 1].text_color
+              const selectedColor = dataColor[item.id - 1].selected_color
+
               let speeds = parseInt(item.speed.replace(" Mbps", ""));
               let prosen = 0;
               switch (speeds) {
