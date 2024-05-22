@@ -46,7 +46,7 @@ const PriceList = () => {
         <div className="flex flex-col items-start justify-start mb-10 gap-5">
           <h1 className="text-2xl font-bold">Paket Internet Only</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {inetOnly.map((item, idx) => {
+            {Price.map((item, idx) => {
               const borderLine = dataColor[item.id - 1].border_color
               const textColor = dataColor[item.id - 1].text_color
               const selectedColor = dataColor[item.id - 1].selected_color
